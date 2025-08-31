@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require("cors");
 
 const { getStoredItems, storeItems } = require('./data/items');
 const PORT = process.env.PORT || 5000;
