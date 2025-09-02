@@ -2,11 +2,13 @@ import { IoMdPerson } from "react-icons/io";
 import { FaHeartbeat } from "react-icons/fa";
 import { FaShoppingBag } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
+import { searchActions } from "../store/searchSlice";
 
 const Header=()=>{
 
     const bag=useSelector((store)=>store.bag);
+    const dispatch=useDispatch();
   return (
     <header>
         <div className="logo_container">
@@ -22,7 +24,8 @@ const Header=()=>{
         </nav>
         <div className="search_bar">
             <span className="material-symbols-outlined search_icon">search</span>
-            <input className="search_input" placeholder="Search for products, brands and more"/>
+            <input type="text" className="search_input" placeholder="Search for products, brands and more"
+            onChange={(e)=>dispatch(searchActions.setSearch(e.target.value))}/>
         </div>
         <div className="action_bar">
             <div className="action_container">
